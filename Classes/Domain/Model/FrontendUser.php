@@ -146,6 +146,13 @@ class FrontendUser extends AbstractEntity implements FrontendUserInterface
      */
     protected string $passwordRepeat = '';
 
+
+    /**
+     * virtual not stored in database
+     * @var string
+     */
+    protected string $oldPassword = '';
+
     /**
      *  virtual not stored in database
      *
@@ -365,6 +372,26 @@ class FrontendUser extends AbstractEntity implements FrontendUserInterface
     public function getPassword(): string
     {
         return $this->password;
+    }
+
+    /**
+     * virtual, not saved in database
+     *
+     * @param string $password
+     */
+    public function setOldPassword(string $password)
+    {
+        $this->oldPassword = $password;
+    }
+
+    /**
+     * virtual, not saved in database
+     *
+     * @return string
+     */
+    public function getOldPassword(): string
+    {
+        return $this->oldPassword;
     }
 
     /**

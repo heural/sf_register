@@ -69,6 +69,11 @@ plugin.tx_sfregister.settings {
     email = "EmailAddress"
     gtc = "Evoweb.SfRegister:IsTrue"
     image = "Evoweb.SfRegister:ImageUpload"
+    oldPassword {
+      1 = "Evoweb.SfRegister:Required"
+      2 = "StringLength", options={"minimum": 2, "maximum": 40}
+      3 = "Evoweb.SfRegister:EqualCurrentPassword"
+    }
   }
 
   validation.password {
