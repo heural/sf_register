@@ -16,6 +16,7 @@ namespace Evoweb\SfRegister\Controller\Event;
  */
 
 use Evoweb\SfRegister\Domain\Model\FrontendUser;
+use Evoweb\SfRegister\Domain\Model\Password;
 
 final class PasswordSaveEvent
 {
@@ -23,10 +24,13 @@ final class PasswordSaveEvent
 
     protected array $settings = [];
 
-    public function __construct(FrontendUser $user, array $settings)
+    protected Password $password;
+
+    public function __construct(FrontendUser $user, Password $password, array $settings)
     {
         $this->user = $user;
         $this->settings = $settings;
+        $this->password = $password;
     }
 
     public function getUser(): FrontendUser
@@ -37,5 +41,13 @@ final class PasswordSaveEvent
     public function getSettings(): array
     {
         return $this->settings;
+    }
+
+    /**
+     * @return Password
+     */
+    public function getPassword(): Password
+    {
+        return $this->password;
     }
 }

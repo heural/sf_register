@@ -73,7 +73,7 @@ class FeuserPasswordController extends FeuserController
             /** @var FrontendUser $user */
             $user = $this->userRepository->findByUid($userId);
 
-            $this->eventDispatcher->dispatch(new PasswordSaveEvent($user, $this->settings));
+            $this->eventDispatcher->dispatch(new PasswordSaveEvent($user, $password, $this->settings));
 
             $user->setPassword($this->encryptPassword($password->getPassword()));
 
